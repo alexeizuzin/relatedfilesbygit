@@ -1,0 +1,80 @@
+{
+	"name": "relatedfilesbygit",
+	"displayName": "Related files by git",
+	"description": "Search related files by git history for opened document. Need to set repository path. Mac os: shift+cmd+j, Win: ctrl+alt+j",
+	"version": "0.0.1",
+	"publisher": "alexeizuzin",
+	"icon": "icon.png",
+	"engines": {
+		"vscode": "^1.52.0"
+	},
+	"author": {
+		"name": "alexeizuzin"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:relatedfilesbygit.find"
+	],
+	"main": "./extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "relatedfilesbygit.find",
+				"title": "Related files"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "relatedfilesbygit.find",
+				"key": "ctrl+alt+j",
+				"mac": "shift+cmd+j"
+			}
+		],
+		"configuration": {
+			"title": "Related files by git",
+			"properties": {
+				"relatedfilesbygit.repositoryPath": {
+					"type": "string",
+					"scope": "window",
+					"default": "/Users/<username>/<your project>/",
+					"description": "Path to repository on your computer"
+				},
+				"relatedfilesbygit.historyDepth": {
+					"type": "number",
+					"scope": "window",
+					"default": 30,
+					"description": "Last commits for searching related files"
+				},
+				"relatedfilesbygit.maxCommitFilesAmount": {
+					"type": "number",
+					"scope": "window",
+					"default": 15,
+					"description": "If commit contains too much files, possibly they are not related"
+				},
+				"relatedfilesbygit.maxRelatedFiles": {
+					"type": "number",
+					"scope": "window",
+					"default": 12,
+					"description": "Suggested files to show"
+				},
+				"relatedfilesbygit.alternateExtensions": {
+					"type": "string",
+					"scope": "window",
+					"default": "ts, tsx",
+					"description": "Search this instead of origin file (if need)"
+				},
+				"relatedfilesbygit.basicExtension": {
+					"type": "string",
+					"scope": "window",
+					"default": "js",
+					"description": "Basic Extension if need to search renamed (e.g. if no .js, search .ts)"
+				}
+			}
+		}
+	},
+	"dependencies": {
+		"simple-git": "^2.31.0"
+	}
+}
