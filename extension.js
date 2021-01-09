@@ -4,7 +4,6 @@ const simpleGit = require('simple-git');
 
 const {
 	alternateExtensions,
-	baseDir,
 	basicExtension,
 	historyDepth,
 	maxCommitFilesAmount,
@@ -14,6 +13,8 @@ const {
 const extensions = alternateExtensions
 	.split(',')
 	.map(str => `.${str.trim()}`);
+
+const baseDir = vscode.workspace.workspaceFolders[0].uri.fsPath + '/';
 
 const gitOptions = {
 	baseDir,
@@ -66,6 +67,10 @@ function activate(context) {
 						allRelatedFiles[file] = relatedFiles;
 
 						resolve("Done!");
+					}).catch(err => {
+						vscode.window.showInformationMessage('Sorry, repository not found!');
+						resolve("Error!");
+						console.log('Log error: ', err);
 					});
 				})
 			});

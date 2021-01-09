@@ -1,9 +1,13 @@
 {
 	"name": "relatedfilesbygit",
 	"displayName": "Related files by git",
-	"description": "Search related files by git history for opened document. Need to set repository path. Mac os: shift+cmd+j, Win: ctrl+alt+j",
-	"version": "0.0.1",
+	"description": "Search related files by git history for current opened document. Need to 'open folder' wich is repository root. Open document and press on Mac os: shift+cmd+j, on Win: ctrl+alt+j",
+	"version": "0.0.3",
 	"publisher": "alexeizuzin",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/alexeizuzin/relatedfilesbygit.git"
+	},
 	"icon": "icon.png",
 	"engines": {
 		"vscode": "^1.52.0"
@@ -35,12 +39,6 @@
 		"configuration": {
 			"title": "Related files by git",
 			"properties": {
-				"relatedfilesbygit.repositoryPath": {
-					"type": "string",
-					"scope": "window",
-					"default": "/Users/<username>/<your project>/",
-					"description": "Path to repository on your computer"
-				},
 				"relatedfilesbygit.historyDepth": {
 					"type": "number",
 					"scope": "window",
@@ -69,7 +67,7 @@
 					"type": "string",
 					"scope": "window",
 					"default": "js",
-					"description": "Basic Extension if need to search renamed (e.g. if no .js, search .ts)"
+					"description": "Basic Extension if need to search renamed (e.g. if no foo.js, search foo.ts)"
 				}
 			}
 		}
